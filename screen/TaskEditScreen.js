@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, Button} from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useContext, useState } from "react";
 import { TaskContext } from "../store/task-context";
+import { removeTask, updateTask } from "../http";
 
 function TaskEditScreen(){
     const taskCTX = useContext(TaskContext)
@@ -17,10 +18,12 @@ function TaskEditScreen(){
     function editTask(){
         task.name = name
         taskCTX.editTask(id, task)
+        updateTask(id, task)
         navigator.navigate('Task')
     }
     function deleteTask(){
         taskCTX.deleteTask(id);
+        removeTask(id)
         navigator.goBack()
     }
     

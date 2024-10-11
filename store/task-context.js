@@ -5,6 +5,7 @@ export const TaskContext = createContext({
     addTask:(task)=>{},
     editTask:(id, task)=>{},
     deleteTask:(id)=>{},
+    modifyTasks:(list)=>{ }
 
 })
 
@@ -32,11 +33,16 @@ function TaskContextProvider({children}){
         }))
     }
 
+    function modifyTasks(list){
+        setTasks(list)
+    }
+
     const value = {
         tasks:tasks,
         addTask:addTask,
         deleteTask:deleteTask,
-        editTask:editTask
+        editTask:editTask,
+        modifyTasks:modifyTasks
     }
 
     return <TaskContext.Provider value={value}>

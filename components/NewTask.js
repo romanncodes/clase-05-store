@@ -3,6 +3,7 @@ import { View, Text, Button, Modal, TextInput, StyleSheet } from "react-native";
 import IconButton from "./IconButton";
 import { useContext, useState } from "react";
 import { TaskContext } from "../store/task-context";
+import { saveTask } from "../http";
 
 
 
@@ -17,6 +18,7 @@ function NewTask(props){
             date:Date()
 
         })
+        saveTask({name:name, date:Date()})
         props.hideModal()
     }
 
