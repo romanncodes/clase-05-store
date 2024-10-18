@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TasksScreen from './screen/TasksScreen';
 import TaskEditScreen from './screen/TaskEditScreen';
 import TaskContextProvider from './store/task-context';
+import LoginScreen from './screen/LoginScreen';
+import RegisterScreen from './screen/RegisterScreen';
 
 
 const Stack = createStackNavigator();
@@ -14,7 +16,9 @@ export default function App() {
     <StatusBar style='dark'/>
     <TaskContextProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerLeft:false}}>
+          <Stack.Screen name="Login" component={LoginScreen}/>
+          <Stack.Screen name="Register" component={RegisterScreen}/>
           <Stack.Screen name='Task' component={TasksScreen} />
           <Stack.Screen name='Edit' component={TaskEditScreen} />
         </Stack.Navigator>
